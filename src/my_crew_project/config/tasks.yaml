@@ -1,0 +1,30 @@
+fullstack_coding_task:
+  description: >
+    Implement an integrated solution based on research and report outcomes, blending React front-end (JSX, functional components, advanced state) with robust backend logic. Focus on maintainability, performance, and clean code.
+  expected_output: >
+    A fully realized application (JS/React and/or Python), provided in markdown, demonstrating best full stack practices.
+  agent: fullstack_coding_expert
+
+backend_coding_task:
+  description: >
+    Develop backend services tailored to research and reporting requirements. Prioritize secure, scalable API design and efficient data handling, ready for seamless front-end consumption.
+  expected_output: >
+    Complete backend code (JS/Python), formatted in markdown, emphasizing scalable architecture and reliability.
+  agent: backend_coding_expert
+
+visualization_task:
+  description: >
+    Create visually engaging, interactive app components in React (JSX, functional components) with custom CSS (no frameworks). Collaborate closely with the Full Stack and Backend agents to visualize data and user interactions elegantly.
+  expected_output: >
+    Custom React components and pure CSS, formatted in markdown, showcasing advanced UI/UX for {topic}-driven applications.
+  agent: visualization_engineer
+
+manager_task:
+  description: >
+    Delegate, coordinate, and supervise asynchronous task execution among Fullstack, Backend, and Visualization agents for {topic}. Ensure task alignment, resolve dependencies, and facilitate cross-agent communication. Apply Reflexive Intelligence Matrix at every stage to spot ambiguity, synthesize insights, and iteratively refine outputs. Actively seek feedback, monitor process health, and provide a final meta-level report on workflow, agent synergy, and quality.
+  expected_output: >
+    (1) Delegation and execution plan showing agent-task allocation and dependencies,
+    (2) Task status and async updates from each agent,
+    (3) Reflexive feedback loop on bottlenecks, improvements, and agent collaboration,
+    (4) Final meta-report summarizing overall workflow efficiency, output quality, and actionable improvements for future cycles.
+  agent: manager_llm
