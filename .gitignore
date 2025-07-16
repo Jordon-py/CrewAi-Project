@@ -1,0 +1,212 @@
+# =============================================================================
+# Distressed Homes Project - Comprehensive .gitignore
+# =============================================================================
+
+# =============================================
+# Environment & Secrets
+# =============================================
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets/
+credentials/
+
+# =============================================
+# Node.js & Frontend (React/Vite)
+# =============================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+.nuxt/
+.cache/
+.parcel-cache/
+coverage/
+
+# Runtime & temp
+*.local
+.DS_Store
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+
+# =============================================
+# Python & Backend (CrewAI)
+# =============================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv/
+crew-env/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# =============================================
+# Logs & Monitoring
+# =============================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+output.log
+
+# =============================================
+# Database & Data Files
+# =============================================
+*.db
+*.sqlite
+*.sqlite3
+.dbdata/
+data/
+*.csv
+*.json
+!package*.json
+!tsconfig*.json
+
+# =============================================
+# OS & IDE
+# =============================================
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+
+# VSCode
+.vscode/
+!.vscode/extensions.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/settings.json
+
+# JetBrains
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# =============================================
+# Project-Specific
+# =============================================
+# Results & Generated Reports
+results/
+reports/
+output/
+temp/
+tmp/
+
+# Backup files
+*.bak
+*.backup
+*.orig
+*.tmp
+
+# Archives
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# =============================================
+# Docker & Containers
+# =============================================
+Dockerfile*
+.dockerignore
+docker-compose*.yml
+.docker/
+
+# =============================================
+# Cloud & Deployment
+# =============================================
+.vercel
+.netlify/
+.firebase/
+.github/workflows/secrets.yml
+
+# =============================================
+# AI/ML Specific
+# =============================================
+*.model
+*.pkl
+*.h5
+*.onnx
+checkpoints/
+wandb/
+mlruns/

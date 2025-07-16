@@ -1,0 +1,84 @@
+manager_task:
+  description: >
+    As manager_llm, you orchestrate, validate, and safeguard all workflow phases.
+    You meticulously review every output for structure, completeness, and actionable insights—requesting revisions or escalating as needed.
+    Ensure compliance with legal, contractual, and business standards before approving progression.
+  expected_output: >
+    - Structured markdown review notes or explicit approval.
+    - “Ready for next phase”/“Final approval” signals.
+    - Specific, actionable revision requests if issues found.
+    - Reminds the agents to follow the workflow and maintain high standards and provide high-quality outputs with at least 95% completeness and accuracy.
+    - Orchestrates agents to provide at least 25 high-quality distressed property leads in hot markets across the West Coast.
+  agent: manager_llm
+  output_file: results/manager_reviews.md
+
+scrape_task:
+  description: >
+    scraper_agent collects and structures target_area property data using advanced scraping tools.
+    All data—addresses, prices, contacts, legal flags, and gaps—are organized into markdown tables/lists and flagged for escalation if incomplete.
+  expected_output: >
+    - results/scraped_properties.csv (all property records, fields clearly labeled)
+    - results/scraper_sources.md (sources, methods, issues, and critical gaps)
+    - CSV must be ready for direct analysis by analyst_agent.
+    - Markdown log must allow manager_llm to audit process and escalate issues.
+    - Well-structured markdown (.md) file with all property records.
+    - Clearly labeled tables, missing fields, and actionable flags.
+    - Output: results/scraped_properties.md
+  agent: scraper_agent
+  output_file: results/scraped_properties.md
+
+analyst_task:
+  description: >
+    analyst_agent rigorously analyzes and scores each property from results/scraped_properties.csv,
+    applying a transparent, well-documented rubric for distress, urgency, and opportunity.
+    Documents every decision, edge case, and rationale for scoring.
+    For each property, cross-links to source data and flags any uncertainties or data anomalies.
+    Ensures all logic and calculations are fully auditable for manager_llm and downstream agents.
+    Provides clear prioritization for outreach and next steps, and highlights top 10 "must-act-now" properties.
+    All methodology, scoring, and exceptional findings must be explained in markdown for maximum clarity and future reproducibility.
+  expected_output: >
+    - results/analyzed_properties.csv (with columns: address, price, distress_signals, distress_level, urgency, phone, score, rationale, notes, source_row, flagged_for_review)
+    - results/analyzed_properties.md (includes: scoring rubric, full method, rationale, summary of findings, edge cases, uncertainties, top 10 opportunities, actionable recommendations for outreach, and cross-reference to original records)
+    - All outputs must be structured for immediate use by manager_llm, be fully auditable, and allow quick escalation of issues.
+    - Outputs must allow downstream agents to proceed without ambiguity or manual cleanup.
+  agent: analyst_agent
+  output_file: [results/analyzed_properties.csv, results/analyzed_properties.md]
+
+report_task:
+  description: >
+    writer_agent produces an executive-grade, audit-ready report synthesizing all pipeline outputs.
+    The report provides: a strategic summary; actionable recommendations; deal ranking and status tables; links to all supporting files; explanation of methodologies; QA commentary; and a full audit trail.
+    Each section must be clear for stakeholders, support investor/legal review, and explicitly reference original data and analysis decisions.
+    A summary CSV with key statistics, actionable insights, and cross-links to properties is included for rapid stakeholder consumption.
+  expected_output: >
+    - results/distressed_report.md (includes: executive summary, deal ranking table, key stats, recommended actions, QA commentary, file lineage, methods used, limitations, and explicit references to all supporting files)
+    - results/distressed_report.csv (summary table: address, score, distress_level, recommended_action, status, analyst_notes, links to detailed outputs)
+    - All outputs must be presentation-ready for both business and legal audiences, support complete auditability, and empower immediate investor or executive decision-making.
+
+  agent: writer_agent
+  output_file: [results/distressed_report.csv, results/distressed_report.md]
+
+
+acquisitions_prep_task:
+  description: >
+    acquisitions_prep_agent reviews all property and report outputs, verifies accuracy, and fills in any missing details using external sources if necessary. Prepares fully completed contract templates and custom outreach scripts.
+  expected_output: >
+    - A verification checklist for each property with resolved missing fields.
+    - Markdown summaries of additional data found (contacts, liens, legal flags).
+    - Pre-filled contract templates ready for review.
+    - Tailored call and email outreach templates for each property.
+  agent: acquisitions_prep_agent
+  output_file: [results/prepared_properties.csv, results/prepared_properties.md]
+
+investor_strategy_task:
+  description: >
+    investor_strategy_agent develops a detailed step-by-step outreach and assignment plan. Curates a list of qualified investors, provides fully-prepared scripts and templates for owner and investor communications, and fills out assignment contracts. Includes a closing checklist and all resources needed for you to execute.
+  expected_output: >
+    - Step-by-step action plan for contacting sellers and investors.
+    - List of top investor targets, with rationale and contact info.
+    - Custom phone call and email templates for seller/investor outreach.
+    - Filled-out assignment/wholesale contracts with all known details.
+    - Final checklist for closing, ensuring complete preparedness.
+    - Output: results/action_plan.md
+  agent: investor_strategy_agent
+  output_file: [results/action_plan.csv, results/action_plan.md]
