@@ -1,54 +1,40 @@
-# MyCrewProject Crew
+# Distressed Home Prospect Finder
 
-Welcome to the MyCrewProject Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+A CrewAI-powered system that discovers, enriches, and ranks distressed residential properties for a user-provided city/state. The stack combines a multi-agent backend (CrewAI + FastAPI) with a Next.js UI for entering search regions, reviewing prospects, and exporting to CSV/CRM.
+
+## Project Status
+- **Current focus:** Research and architecture definition. See `docs/research_summary.md` and `docs/architecture_blueprint.md` for findings and design.
+- **Next steps:** Implement CrewAI agents, FastAPI endpoints, and the Next.js UI; wire data providers and compliance safeguards.
 
 ## Installation
-
-Ensure you have Python >=3.10 <3.14 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
-
-First, if you haven't already, install uv:
+Ensure you have Python >=3.10 and [uv](https://docs.astral.sh/uv/) installed.
 
 ```bash
 pip install uv
-```
-
-Next, navigate to your project directory and install the dependencies:
-
-(Optional) Lock the dependencies and install them by using the CLI command:
-```bash
 crewai install
 ```
-### Customizing
 
-**Add your `OPENAI_API_KEY` into the `.env` file**
+Add your credentials to `.env` (e.g., `OPENAI_API_KEY`, provider API keys) before running.
 
-- Modify `src/my_crew_project/config/agents.yaml` to define your agents
-- Modify `src/my_crew_project/config/tasks.yaml` to define your tasks
-- Modify `src/my_crew_project/crew.py` to add your own logic, tools and specific args
-- Modify `src/my_crew_project/main.py` to add custom inputs for your agents and tasks
-
-## Running the Project
-
-To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
+## Running (template)
+From the project root:
 
 ```bash
-$ crewai run
+crewai run
 ```
 
-This command initializes the my_crew_project Crew, assembling the agents and assigning them tasks as defined in your configuration.
+The default template will be replaced with the distressed-home workflow in upcoming iterations.
 
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
+## Documentation
+- Research summary: `docs/research_summary.md`
+- Architecture blueprint: `docs/architecture_blueprint.md`
+- Crew configuration (to be customized): `src/my_crew_project/config/agents.yaml`, `src/my_crew_project/config/tasks.yaml`
 
-## Understanding Your Crew
+## Compliance and Safety
+- Source contact data only from providers permitting outreach use; honor DNC/TCPA and CAN-SPAM.
+- Encrypt PII in transit and at rest; log provenance and consent. Provide opt-out handling via suppression endpoints.
 
-The my_crew_project Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
-
-## Support
-
-For support, questions, or feedback regarding the MyCrewProject Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
-
-Let's create wonders together with the power and simplicity of crewAI.
+## Contributing
+1. Create a branch for your feature/fix.
+2. Run formatting/linting/tests as added.
+3. Submit PRs with clear descriptions and links to updated docs.
